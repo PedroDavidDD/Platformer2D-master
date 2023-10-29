@@ -1,4 +1,4 @@
-extends Node2D
+extends CharacterBody2D
 
 # Variables de animación de la poción y audio
 @onready var _slimeBasic = $SlimeBasic
@@ -24,11 +24,10 @@ func _on_area_2d_body_entered(body):
 			await get_tree().create_timer(2).timeout
 			player_script.jump = jumpBefore 
 		else:
-			print("Player script is null")
-			
-		HealthDashboard.add_life(5)
+			print("Player script is null")			
+		# HealthDashboard.add_life(5)
+		player_script.hit(1)
 		self.queue_free()  # Liberamos la memoria
-
 
 
 
