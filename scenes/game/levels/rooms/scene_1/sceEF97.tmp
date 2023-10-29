@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dhor7t5klwdwx"]
+[gd_scene load_steps=28 format=3 uid="uid://dhor7t5klwdwx"]
 
 [ext_resource type="TileSet" uid="uid://bx1rsqucrwm2i" path="res://assets/resources/bg_tile_set.tres" id="1_0t8t3"]
 [ext_resource type="PackedScene" uid="uid://8rbt5lmdrp0s" path="res://scenes/game/camera/camera.tscn" id="1_8l71v"]
@@ -23,10 +23,14 @@
 [ext_resource type="PackedScene" uid="uid://b5qjvfbte4svk" path="res://scenes/game/levels/objects/pickable_object/pickable_object.tscn" id="20_juf85"]
 [ext_resource type="PackedScene" uid="uid://glchvmmfffqa" path="res://scenes/game/levels/areas/bomb_shop/bomb_shop.tscn" id="21_sh538"]
 [ext_resource type="PackedScene" uid="uid://dl8afnvp5w315" path="res://scenes/game/levels/objects/power_up/power_up.tscn" id="22_vr6n4"]
-[ext_resource type="PackedScene" uid="uid://cakk10ffh2nby" path="res://slime_green.tscn" id="24_pkljj"]
+[ext_resource type="Texture2D" uid="uid://bl5qj3xk6884" path="res://SlimeBasic_00006.png" id="24_4jaep"]
+[ext_resource type="Script" path="res://scenes/game/levels/rooms/scene_1/SlimeGreen.gd" id="25_h5us1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3x710"]
 size = Vector2(31, 21)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lfa10"]
+size = Vector2(225, 187.5)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_j3e3j")
@@ -246,4 +250,17 @@ character = NodePath("../MainCharacter")
 position = Vector2(186, 523)
 animation = &"green_bottle"
 
-[node name="SlimeGreen" parent="." instance=ExtResource("24_pkljj")]
+[node name="SlimeBasic00006" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(236, 536)
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("24_4jaep")
+script = ExtResource("25_h5us1")
+
+[node name="Area2D" type="Area2D" parent="SlimeBasic00006"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SlimeBasic00006/Area2D"]
+position = Vector2(0, 6.25)
+shape = SubResource("RectangleShape2D_lfa10")

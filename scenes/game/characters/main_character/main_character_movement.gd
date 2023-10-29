@@ -53,7 +53,6 @@ func _ready():
 	if not character:
 		set_physics_process(false)
 
-
 # Función de ejecución de físicas
 func _physics_process(_delta):
 	_move(_delta)
@@ -272,3 +271,6 @@ func _play_sword_effect():
 	
 	# Reproducimos el efecto de la espada
 	effect_animation_sword.play("attack_2_effect")
+
+func _on_area_sword_body_entered(area):
+	print(area.name, "player: area")
