@@ -20,10 +20,10 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bjko8"]
-size = Vector2(12, 13)
+[sub_resource type="CircleShape2D" id="CircleShape2D_1qsv5"]
+radius = 7.0
 
-[node name="SlimeGreen" type="Node2D"]
+[node name="SlimeGreen" type="Node2D" groups=["slimeJump"]]
 position = Vector2(236, 537)
 script = ExtResource("2_xtw7r")
 
@@ -36,7 +36,6 @@ sprite_frames = SubResource("SpriteFrames_726pj")
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_bjko8")
+shape = SubResource("CircleShape2D_1qsv5")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

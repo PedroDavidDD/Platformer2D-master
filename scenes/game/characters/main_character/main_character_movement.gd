@@ -272,5 +272,4 @@ func _play_sword_effect():
 	# Reproducimos el efecto de la espada
 	effect_animation_sword.play("attack_2_effect")
 
-func _on_area_sword_body_entered(area):
-	print(area.name, "player: area")
+
