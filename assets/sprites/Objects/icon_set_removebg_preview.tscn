@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://g8qg1kpqq5eh"]
+
+[ext_resource type="Texture2D" uid="uid://b0hodjearyyww" path="res://IconSet-removebg-preview.png" id="1_ovb5c"]
+
+[node name="IconSet-removebg-preview" type="Sprite2D"]
+texture_filter = 1
+position = Vector2(623.938, 241.095)
+scale = Vector2(0.523149, 0.581815)
+texture = ExtResource("1_ovb5c")
+hframes = 16
+vframes = 15
+frame = 147
