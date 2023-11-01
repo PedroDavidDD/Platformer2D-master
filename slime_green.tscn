@@ -24,7 +24,7 @@ size = Vector2(11.5, 12.5)
 position = Vector2(236, 537)
 script = ExtResource("2_xtw7r")
 
-[node name="SlimeBasic" type="AnimatedSprite2D" parent="."]
+[node name="EnemyAnimation" type="AnimatedSprite2D" parent="."]
 position = Vector2(4.17233e-06, -0.750021)
 scale = Vector2(0.0531915, 0.0722656)
 sprite_frames = SubResource("SpriteFrames_726pj")

@@ -56,7 +56,6 @@ func _ready():
 # Función de ejecución de físicas
 func _physics_process(_delta):
 	_move(_delta)
-	
 
 func _unhandled_input(event):
 	# Cuando se presiona la tecla x, atacamos	

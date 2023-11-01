@@ -4,7 +4,8 @@ extends CharacterBody2D
 @onready var _slimeBasic = $SlimeBasic
 
 func _ready():
-	_slimeBasic.play()
+	if _slimeBasic:
+		_slimeBasic.play()
 
 func _process(delta):
 	pass

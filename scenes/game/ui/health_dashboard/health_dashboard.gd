@@ -9,16 +9,23 @@ extends CanvasLayer
 
 # Variable (públicas) de vida y puntuación
 var life = 10 # Variable para menejo de vida
+
 # Variable para menejo de puntos y cantidad de bombas
 var points = {
-	"GoldCoin": 0,
+	"GoldCoin": 0, 
 	"SilverCoin": 0,
 	"BlueDiamond": 0,
 	"GreenDiamond": 0,
 	"RedDiamond": 0,
 	"Bomb": 0,
+	"Crabby": 0,
+	"Slime": 0,
 }
 
+var enemies = {
+	CRABBY = "Crabby",
+	SLIME = "Slime",
+}
 # Variables auxiliares para cambiar la puntuación de un tipo de objeto coleccionable
 var _number_1: TextureRect
 var _number_2: TextureRect
@@ -33,6 +40,8 @@ var _index_number_0 = 17
 @onready var bar = $LifeBar/Bar
 @onready var point_group = $PointGroup
 @onready var bomb_group = $LifeBar/Bomb
+@onready var enemy_group = $EnemyGroup
+@onready var crabby_group = $EnemyGroup/Crabby
 
 
 # Función de inicialización
@@ -150,3 +159,13 @@ func _get_text_region(position: int):
 			y += delta # Avanzamos a la siguiente fila
 			
 	return Rect2(x, y, w, h)
+
+
+# Número de enemigos vivos
+func get_living_enemies(body):
+	if body.is_in_group("player"):
+		var living_enemies = get_tree().get_node_in_group("enemy")
+		if living_enemies.size() == 0:
+			_number_1 = crabby_group.find_child("Number1")	
+		else:
+			print("xxx")

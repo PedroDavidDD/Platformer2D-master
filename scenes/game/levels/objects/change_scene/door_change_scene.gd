@@ -5,8 +5,9 @@ extends Node2D
 ## Cambio de escenas: https://docs.google.com/document/d/1eIBtgr8wln1pT0aZ4c-YWk_pqngyBg4HDsgdYLAXv28/edit?usp=sharing
 ## Uso de señales: https://docs.google.com/document/d/1vFSOuJkBy7xr5jksgCBNaTpqJHE_K87ZNafB5ZJ_I0M/edit?usp=sharing
 ## Uso de objetos para cambio de escena: https://docs.google.com/document/d/1DeAuU4dYa7DsWs-ht5Aiq4mFraOOu7hraNgIeSZn4lA/edit?usp=sharing
+var _number_1: TextureRect
 
-
+@onready var crabby_group = $EnemyGroup/Crabby
 # Ruta de la escena a cargar
 @export var _path_to_scene = ""
 
@@ -20,7 +21,12 @@ func _ready():
 
 
 # Cargamos el siguiente nivel (la siguiente escena)
-func _load_nex_level(body):
+func _load_nex_level(body):	
 	# Cambiamos de escena si la ruta no está vacía y el personaje principa entra en contacto
-	if _path_to_scene != "" and body.is_in_group("player"):
-		SceneTransition.change_scene(_path_to_scene)
+	if body.is_in_group("player"):
+			var living_enemies = get_tree().get_nodes_in_group("enemy").size()
+			if living_enemies == 0:
+				if _path_to_scene != "":
+					SceneTransition.change_scene(_path_to_scene)
+			else: 
+				print("Enemies: {str}".format({"str": living_enemies}))
