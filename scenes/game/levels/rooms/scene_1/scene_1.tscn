@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dhor7t5klwdwx"]
+[gd_scene load_steps=26 format=3 uid="uid://dhor7t5klwdwx"]
 
 [ext_resource type="TileSet" uid="uid://bx1rsqucrwm2i" path="res://assets/resources/bg_tile_set.tres" id="1_0t8t3"]
 [ext_resource type="PackedScene" uid="uid://8rbt5lmdrp0s" path="res://scenes/game/camera/camera.tscn" id="1_8l71v"]
@@ -24,7 +24,6 @@
 [ext_resource type="PackedScene" uid="uid://glchvmmfffqa" path="res://scenes/game/levels/areas/bomb_shop/bomb_shop.tscn" id="21_sh538"]
 [ext_resource type="PackedScene" uid="uid://dl8afnvp5w315" path="res://scenes/game/levels/objects/power_up/power_up.tscn" id="22_vr6n4"]
 [ext_resource type="PackedScene" uid="uid://cakk10ffh2nby" path="res://slime_green.tscn" id="24_pkljj"]
-[ext_resource type="PackedScene" uid="uid://g8qg1kpqq5eh" path="res://assets/sprites/Objects/icon_set_removebg_preview.tscn" id="25_apkul"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3x710"]
 size = Vector2(31, 21)
@@ -145,7 +144,7 @@ position = Vector2(1339, -295)
 position = Vector2(298, -108)
 texture = ExtResource("13_amc1m")
 
-[node name="DoorChangeScene" parent="Objects" instance=ExtResource("17_ydyba")]
+[node name="DoorChangeScene" parent="Objects" groups=["doorChangeScene"] instance=ExtResource("17_ydyba")]
 position = Vector2(1252, -135)
 scale = Vector2(0.8, 0.8)
 _path_to_scene = "res://scenes/game/levels/rooms/scene_2/scene_2.tscn"
@@ -249,6 +248,3 @@ animation = &"green_bottle"
 
 [node name="SlimeGreen" parent="." groups=["enemy"] instance=ExtResource("24_pkljj")]
 position = Vector2(216, 538)
-
-[node name="IconSet-removebg-preview" parent="." instance=ExtResource("25_apkul")]
-position = Vector2(1461, 277)

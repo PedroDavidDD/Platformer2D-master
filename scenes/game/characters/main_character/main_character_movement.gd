@@ -45,6 +45,7 @@ var _dead_sound = preload("res://assets/sounds/dead.mp3")
 var _male_hurt_sound = preload("res://assets/sounds/male_hurt.mp3")
 var _hit_sound = preload("res://assets/sounds/slash.mp3")
 
+var playerKeys = [] # C0, C20, ...
 
 # Función de inicialización
 func _ready():

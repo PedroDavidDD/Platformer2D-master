@@ -15,7 +15,7 @@ func _on_area_2d_body_entered(body):
 		print(body.name, " slime: body")
 
 		var player = body
-		var player_script = player.get_node("MainCharacterMovement")		
+		var player_script = player.get_node("MainCharacterMovement")
 		var jumpBefore = player_script.jump
 
 		if player_script:			

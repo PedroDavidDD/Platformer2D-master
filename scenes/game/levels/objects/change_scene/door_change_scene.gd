@@ -14,19 +14,42 @@ var _number_1: TextureRect
 # Referencia al area
 @onready var _area = $Area2D
 
+var door_keys = [] # C0, C1, ...
+var is_open_door = false
 
 # Función de inicialización
 func _ready():
 	_area.body_entered.connect(_load_nex_level)
 
+func _process(delta):
+	pass
+
+func _add_door_keys():
+	var parent_node = get_parent()
+	var keys_group = parent_node.get_tree().get_nodes_in_group("key")
+	if keys_group.size() > 0:
+		for i in range(keys_group.size()):  
+			door_keys.push_back(keys_group[i].idKey)
+			print(door_keys[i]) # C0, C1, ...
 
 # Cargamos el siguiente nivel (la siguiente escena)
-func _load_nex_level(body):	
+func _load_nex_level(body):
 	# Cambiamos de escena si la ruta no está vacía y el personaje principa entra en contacto
 	if body.is_in_group("player"):
 			var living_enemies = get_tree().get_nodes_in_group("enemy").size()
+			var number_keys_accept = 0
+			
 			if living_enemies == 0:
-				if _path_to_scene != "":
-					SceneTransition.change_scene(_path_to_scene)
+				if body.get_node("MainCharacterMovement").playerKeys.size() > 0:
+					for i in range(body.get_node("MainCharacterMovement").playerKeys.size()):
+						if (body.get_node("MainCharacterMovement").playerKeys[i] == door_keys[i]):
+							# if (number_keys_accept == door_keys.size()):
+							is_open_door = true
+							if _path_to_scene != "":
+								SceneTransition.change_scene(_path_to_scene)			
 			else: 
 				print("Enemies: {str}".format({"str": living_enemies}))
+
+func _on_area_2d_body_entered(body):
+	if body.is_in_group("player"):
+		_add_door_keys()
