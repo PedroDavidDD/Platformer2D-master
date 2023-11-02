@@ -17,11 +17,9 @@ frame = 147
 script = ExtResource("2_jt6nt")
 
 [node name="Area2D" type="Area2D" parent="."]
-scale = Vector2(1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0.119507, -4.46045)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_t27tm")
 
 [node name="Control" type="Control" parent="."]

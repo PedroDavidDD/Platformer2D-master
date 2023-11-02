@@ -20,6 +20,7 @@ var is_open_door = false
 # Función de inicialización
 func _ready():
 	_area.body_entered.connect(_load_next_level)
+	# Llaves que necesita esta puerta
 	_add_door_keys()
 
 func _process(delta):
@@ -38,37 +39,39 @@ func _load_next_level(body):
 	if body.is_in_group("player"):
 		var living_enemies = get_tree().get_nodes_in_group("enemy").size()
 		var enemies_died = false
+		
 		if living_enemies == 0:
 			enemies_died = true
 		else:
 			enemies_died = false
 			print("Te falta eliminar enemigos: " + str(living_enemies))
 		
-		enemies_died = true
 		if enemies_died:
 			var player_keys = body.get_node("MainCharacterMovement").playerKeys
 			
-			print("door_keys: " + str(door_keys.size()) + "\n")
-			print("player_keys: " + str(player_keys.size()))
-				
+			print("door_keys: " + str(door_keys.size()) + "\n" + "player_keys: " + str(player_keys.size()))
+			
 			if door_keys.size() > 0 and player_keys.size() > 0:
 				var keys_accepted = 0
+				
 				# Si un elemento de 'player_keys' está en door_keys.
-				for i in range(player_keys.size()):
-					# solo recorre si tiene iguales
+				for i in player_keys.size():
 					if player_keys[i] in door_keys: 
 						keys_accepted += 1
-						print("Tengo la llave: " + str(player_keys[i]))
-						# Elminar por nombre, debe ser door_keys[i].pop_at(i)
-						print("Te falta la llave: " + str(door_keys[i]))
-							
-					else:
-						print("Necesito más llaves de la puerta: " + str(door_keys[i]))
+				
+				var keys_in_possession = player_keys.filter(func(player_key):
+					return door_keys.has(player_key)
+				)
+				var missing_keys = door_keys.filter(func(door_key):
+					return not keys_in_possession.has(door_key)
+				)
 				
 				if keys_accepted == door_keys.size():
 					is_open_door = true
 					if _path_to_scene != "":
 						SceneTransition.change_scene(_path_to_scene)
+				else:
+					print("Tengo las llaves: " + str(keys_in_possession) + "/"+ str(door_keys)+"")
+					print("Necesito más llaves de la puerta: " + str(missing_keys))
 			else:
 				print("Consigue llaves")
-
