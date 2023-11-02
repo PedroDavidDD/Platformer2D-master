@@ -19,7 +19,8 @@ var is_open_door = false
 
 # Función de inicialización
 func _ready():
-	_area.body_entered.connect(_load_nex_level)
+	_area.body_entered.connect(_load_next_level)
+	_add_door_keys()
 
 func _process(delta):
 	pass
@@ -33,23 +34,36 @@ func _add_door_keys():
 			print(door_keys[i]) # C0, C1, ...
 
 # Cargamos el siguiente nivel (la siguiente escena)
-func _load_nex_level(body):
-	# Cambiamos de escena si la ruta no está vacía y el personaje principa entra en contacto
+func _load_next_level(body):
 	if body.is_in_group("player"):
-			var living_enemies = get_tree().get_nodes_in_group("enemy").size()
-			var number_keys_accept = 0
+		var living_enemies = get_tree().get_nodes_in_group("enemy").size()
+		
+		if living_enemies == 0:
+			var player_keys = body.get_node("MainCharacterMovement").playerKeys
 			
-			if living_enemies == 0:
-				if body.get_node("MainCharacterMovement").playerKeys.size() > 0:
-					for i in range(body.get_node("MainCharacterMovement").playerKeys.size()):
-						if (body.get_node("MainCharacterMovement").playerKeys[i] == door_keys[i]):
-							# if (number_keys_accept == door_keys.size()):
-							is_open_door = true
-							if _path_to_scene != "":
-								SceneTransition.change_scene(_path_to_scene)			
-			else: 
-				print("Enemies: {str}".format({"str": living_enemies}))
+			if door_keys.size() > 0 and player_keys.size() > 0:
+				var keys_accepted = 0
+				for i in range(player_keys.size()):
+					if player_keys[i] in door_keys:  # Utiliza "in" para verificar si un elemento está en door_keys.
+						keys_accepted += 1
+				
+				if keys_accepted == door_keys.size():
+					is_open_door = true
+					if _path_to_scene != "":
+						SceneTransition.change_scene(_path_to_scene)
+				else:
+					var copyDoorKeys = door_keys
+					var missing_keys = []
+					
+					for i in range(player_keys.size()):
+						if player_keys[i] in copyDoorKeys:
+							copyDoorKeys.pop_at(i)
+						else:
+							print("Falta la llave: " + str(copyDoorKeys[i]))
+			else:
+				print("No keys or enemies remaining")
+				print("door_keys: " + str(door_keys.size()))
+				print("player_keys: " + str(player_keys.size()))
+		else:
+			print("Enemies: " + str(living_enemies))
 
-func _on_area_2d_body_entered(body):
-	if body.is_in_group("player"):
-		_add_door_keys()

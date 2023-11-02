@@ -1,17 +1,17 @@
 extends Sprite2D
 
-var idKey = "c0"
+var idKey = "C" + str(randi() % 100)  # Genera un número aleatorio entre 0 y 99 y lo concatena con "C".
 
-# Called when the node enters the scene tree for the first time.
+@onready var textKey = $TextKey
+
 func _ready():
-	pass # Replace with function body.
+	textKey.text = str(idKey)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
-
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("player"):
+		var player_keys = body.get_node("MainCharacterMovement").playerKeys
+		player_keys.push_back(idKey)
 		self.queue_free()
