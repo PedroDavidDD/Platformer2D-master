@@ -11,6 +11,7 @@ var _is_active = false # Para saber si el puntero está en el item
 var _dialogues = {
 	"blue_potion": "res://scenes/game/dialogues/dialogues/power_up/blue_potion_item.dialogue",
 	"green_bottle": "res://scenes/game/dialogues/dialogues/power_up/green_bottle_item.dialogue",
+	"key": "res://scenes/game/dialogues/dialogues/power_up/green_bottle_item.dialogue",
 }
 
 @export var num = "1" # Numero de conteo

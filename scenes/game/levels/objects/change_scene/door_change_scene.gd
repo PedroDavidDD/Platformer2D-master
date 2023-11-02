@@ -37,33 +37,38 @@ func _add_door_keys():
 func _load_next_level(body):
 	if body.is_in_group("player"):
 		var living_enemies = get_tree().get_nodes_in_group("enemy").size()
-		
+		var enemies_died = false
 		if living_enemies == 0:
+			enemies_died = true
+		else:
+			enemies_died = false
+			print("Te falta eliminar enemigos: " + str(living_enemies))
+		
+		enemies_died = true
+		if enemies_died:
 			var player_keys = body.get_node("MainCharacterMovement").playerKeys
 			
+			print("door_keys: " + str(door_keys.size()) + "\n")
+			print("player_keys: " + str(player_keys.size()))
+				
 			if door_keys.size() > 0 and player_keys.size() > 0:
 				var keys_accepted = 0
+				# Si un elemento de 'player_keys' está en door_keys.
 				for i in range(player_keys.size()):
-					if player_keys[i] in door_keys:  # Utiliza "in" para verificar si un elemento está en door_keys.
+					# solo recorre si tiene iguales
+					if player_keys[i] in door_keys: 
 						keys_accepted += 1
+						print("Tengo la llave: " + str(player_keys[i]))
+						# Elminar por nombre, debe ser door_keys[i].pop_at(i)
+						print("Te falta la llave: " + str(door_keys[i]))
+							
+					else:
+						print("Necesito más llaves de la puerta: " + str(door_keys[i]))
 				
 				if keys_accepted == door_keys.size():
 					is_open_door = true
 					if _path_to_scene != "":
 						SceneTransition.change_scene(_path_to_scene)
-				else:
-					var copyDoorKeys = door_keys
-					var missing_keys = []
-					
-					for i in range(player_keys.size()):
-						if player_keys[i] in copyDoorKeys:
-							copyDoorKeys.pop_at(i)
-						else:
-							print("Falta la llave: " + str(copyDoorKeys[i]))
 			else:
-				print("No keys or enemies remaining")
-				print("door_keys: " + str(door_keys.size()))
-				print("player_keys: " + str(player_keys.size()))
-		else:
-			print("Enemies: " + str(living_enemies))
+				print("Consigue llaves")
 
