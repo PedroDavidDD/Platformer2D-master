@@ -74,6 +74,7 @@ func _process(delta):
 	move_and_slide()
 	
 	_apply_gravity(delta)
+	
 
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("player"):
@@ -96,9 +97,10 @@ func _on_area_2d_body_entered(body):
 func _jumpSlime():
 	if not _raycast_terrain.is_colliding():
 		_is_jumping = true
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(0.2).timeout
 	_current_movement = animation.FALL
 	_animation.play(_current_movement)
+	
 
 # Función que aplica gravedad de caída o salto
 func _apply_gravity(delta):
@@ -115,9 +117,10 @@ func _apply_gravity(delta):
 		if _raycast_terrain.is_colliding():
 			# Reseteamos variables de salto
 			_is_jumping = false
-			_jump_count = 0
 			_current_movement = animation.IDLE
-			velocity.x = 0
+			_animation.play(_current_movement)
+			await get_tree().create_timer(.1).timeout
+			_current_movement = animation.JUMP
 			_animation.play(_current_movement)
 	# Aplicamos el vector de velocidad al personaje
 	velocity = v
@@ -127,9 +130,9 @@ func _move_idle():
 	velocity.y += _gravity
 	# Aplicamos la dirección de movimiento
 	velocity.x = 0
-	# Iniciamos el movimiento
-	move_and_slide()
 
 func die():
 	# Seteamos la variable de morir averdadero
 	_died = true
+
+
