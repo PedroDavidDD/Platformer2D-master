@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bl5qj3xk6884"
-path="res://.godot/imported/SlimeBasic_00006.png-59989390b4309925ce81a16e447f93cc.ctex"
+uid="uid://ds0y4b8hwyw5y"
+path="res://.godot/imported/SlimeBasic_00000.png-8c663941867608f761fee47ac20dfda2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://SlimeBasic_00006.png"
-dest_files=["res://.godot/imported/SlimeBasic_00006.png-59989390b4309925ce81a16e447f93cc.ctex"]
+source_file="res://assets/sprites/pirate_bomb/9_enemy_slime/1_idle/SlimeBasic_00000.png"
+dest_files=["res://.godot/imported/SlimeBasic_00000.png-8c663941867608f761fee47ac20dfda2.ctex"]
 
 [params]
 

@@ -68,7 +68,7 @@ position = Vector2(1067, 526)
 _path_to_scene = "res://scenes/game/levels/rooms/scene_3/scene_3.tscn"
 
 [node name="Key" parent="DoorChangeScene" groups=["key"] instance=ExtResource("7_c0h6v")]
-position = Vector2(8, -113)
+position = Vector2(-839, 37)
 scale = Vector2(0.653936, 0.727268)
 
 [node name="Enemies" type="Node2D" parent="."]
@@ -77,6 +77,9 @@ scale = Vector2(0.653936, 0.727268)
 position = Vector2(1013, 555)
 animation = "idle"
 moving_direction = "left"
+
+[node name="SlimeGreen" parent="Enemies" instance=ExtResource("19_lvd6b")]
+position = Vector2(157, 473)
 
 [node name="CollectableObjects" type="Node2D" parent="."]
 
@@ -292,6 +295,3 @@ texture = SubResource("CompressedTexture2D_d1lya")
 z_index = -1
 position = Vector2(526, 297)
 animation = &"idle_left"
-
-[node name="SlimeGreen" parent="." instance=ExtResource("19_lvd6b")]
-position = Vector2(157, 473)
