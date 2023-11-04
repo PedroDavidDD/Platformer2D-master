@@ -1,2 +1,2 @@
-# Platformer2D
-Juego Platformer 2D
+# Pirata Mala Plata
+Un proyecto para desarrollar los elementos de un Framework
