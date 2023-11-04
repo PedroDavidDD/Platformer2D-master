@@ -79,7 +79,7 @@ animation = "idle"
 moving_direction = "left"
 
 [node name="SlimeGreen" parent="Enemies" instance=ExtResource("19_lvd6b")]
-position = Vector2(157, 473)
+position = Vector2(831, 431)
 
 [node name="CollectableObjects" type="Node2D" parent="."]
 
@@ -104,19 +104,19 @@ position = Vector2(818, 140)
 animation = "green_diamond"
 
 [node name="Diamond3" parent="CollectableObjects" instance=ExtResource("6_6sl3g")]
-position = Vector2(843, 140)
+position = Vector2(844, 140)
 animation = "green_diamond"
 
 [node name="SilverCoin" parent="CollectableObjects" instance=ExtResource("6_6sl3g")]
-position = Vector2(130, 560)
+position = Vector2(228, 495)
 animation = "silver_coin"
 
 [node name="BlueDiamond" parent="CollectableObjects" instance=ExtResource("6_6sl3g")]
-position = Vector2(150, 560)
+position = Vector2(228, 472)
 animation = "blue_diamond"
 
 [node name="RedDiamond" parent="CollectableObjects" instance=ExtResource("6_6sl3g")]
-position = Vector2(170, 560)
+position = Vector2(228, 518)
 animation = "red_diamond"
 
 [node name="TakingDamageObject" type="Node2D" parent="."]
@@ -126,6 +126,9 @@ position = Vector2(180, 471)
 
 [node name="Box2" parent="TakingDamageObject" instance=ExtResource("5_phmby")]
 position = Vector2(1075, 438)
+
+[node name="Box3" parent="TakingDamageObject" instance=ExtResource("5_phmby")]
+position = Vector2(1075, 418)
 
 [node name="DamageObject" type="Node2D" parent="."]
 
@@ -230,7 +233,7 @@ motion_mirroring = Vector2(1150, 0)
 
 [node name="Bg" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 z_index = -1
-position = Vector2(493, 317)
+position = Vector2(496, 312)
 scale = Vector2(3.07552, 5.17188)
 texture = ExtResource("1_a12cs")
 

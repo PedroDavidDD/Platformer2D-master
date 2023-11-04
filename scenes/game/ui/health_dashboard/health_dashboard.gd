@@ -41,7 +41,8 @@ var _index_number_0 = 17
 @onready var point_group = $PointGroup
 @onready var bomb_group = $LifeBar/Bomb
 @onready var enemy_group = $EnemyGroup
-@onready var crabby_group = $EnemyGroup/Crabby
+@onready var LabelCrabby = $EnemyGroup/Panel/Crabby/LabelCrabby
+@onready var LabelKey = $EnemyGroup/Panel/Keys/LabelKey
 
 
 # Función de inicialización
@@ -160,12 +161,3 @@ func _get_text_region(position: int):
 			
 	return Rect2(x, y, w, h)
 
-
-# Número de enemigos vivos
-func get_living_enemies(body):
-	if body.is_in_group("player"):
-		var living_enemies = get_tree().get_node_in_group("enemy")
-		if living_enemies.size() == 0:
-			_number_1 = crabby_group.find_child("Number1")	
-		else:
-			print("xxx")
