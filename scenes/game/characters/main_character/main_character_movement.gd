@@ -1,4 +1,5 @@
 extends Node2D
+class_name Player
 ## Controlador de movimiento y animación de un personaje.
 ##
 ## Detecta eventos de teclado para poder mover un personaje por un escenario
@@ -49,6 +50,7 @@ var playerKeys = [] # C0, C20, ...
 
 # Función de inicialización
 func _ready():
+	GameManager.player = self
 	main_animation.play(_current_movement)
 	# Si no hay un personaje, deshabilitamos la función: _physics_process
 	if not character:
@@ -174,6 +176,7 @@ func _apply_gravity(delta):
 func die():
 	# Seteamos la variable de morir averdadero
 	_died = true
+	GameManager.respawn_player()
 
 
 # Recibir daño

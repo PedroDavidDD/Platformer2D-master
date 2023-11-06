@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dhor7t5klwdwx"]
+[gd_scene load_steps=30 format=3 uid="uid://dhor7t5klwdwx"]
 
 [ext_resource type="TileSet" uid="uid://bx1rsqucrwm2i" path="res://assets/resources/bg_tile_set.tres" id="1_0t8t3"]
 [ext_resource type="PackedScene" uid="uid://8rbt5lmdrp0s" path="res://scenes/game/camera/camera.tscn" id="1_8l71v"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cg4u52161cun0" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/background/small_cloud_3.png" id="4_ruur6"]
 [ext_resource type="Texture2D" uid="uid://c4mcmly0eo8in" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/background/small_cloud_2.png" id="5_1gi57"]
 [ext_resource type="Texture2D" uid="uid://b2a11ffyw34fs" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/background/water_reflect_medium_01.png" id="12_aiw82"]
+[ext_resource type="PackedScene" uid="uid://nu73qsr241ic" path="res://scenes/Interactable/checkpoint.tscn" id="13_4ur75"]
 [ext_resource type="Texture2D" uid="uid://dcptpykdlp5rk" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/objects/flag/flag_01.png" id="13_amc1m"]
 [ext_resource type="Texture2D" uid="uid://maf7s1c6fyyp" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/objects/chest/chest_close_04.png" id="13_opa56"]
 [ext_resource type="PackedScene" uid="uid://bcil4n46byhj5" path="res://scenes/game/levels/objects/back_palm_tree/back_palm_tree.tscn" id="13_uwpfu"]
@@ -40,8 +41,8 @@ autoplay = true
 bus = &"Ambient"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(771.5, 378.75)
-scale = Vector2(0.291913, 0.215278)
+position = Vector2(771, 380)
+scale = Vector2(0.291913, 0.21552)
 texture = ExtResource("3_3hx38")
 
 [node name="Background" type="Sprite2D" parent="."]
@@ -149,11 +150,18 @@ position = Vector2(218, -64)
 [node name="BackPalmTree6" parent="Objects" instance=ExtResource("13_uwpfu")]
 position = Vector2(1339, -295)
 
+[node name="Checkpoint2" parent="Objects" instance=ExtResource("13_4ur75")]
+position = Vector2(706, -206)
+
+[node name="Checkpoint" parent="Objects" instance=ExtResource("13_4ur75")]
+position = Vector2(277, -140)
+
 [node name="Chest" type="Sprite2D" parent="Objects"]
 position = Vector2(1324, -239)
 texture = ExtResource("13_opa56")
 
 [node name="Flag" type="Sprite2D" parent="Objects"]
+visible = false
 position = Vector2(565, -118)
 texture = ExtResource("13_amc1m")
 
@@ -285,6 +293,9 @@ animation = "red_diamond"
 [node name="RedPotion" parent="Collectibles" instance=ExtResource("20_1tp5l")]
 position = Vector2(640, 280)
 
+[node name="RedPotion3" parent="Collectibles" instance=ExtResource("20_1tp5l")]
+position = Vector2(425, 407)
+
 [node name="RedPotion2" parent="Collectibles" instance=ExtResource("20_1tp5l")]
 position = Vector2(1350, 437)
 
@@ -310,6 +321,11 @@ animation = "green_diamond"
 
 [node name="Crabby" parent="." groups=["enemy"] instance=ExtResource("18_dyrn2")]
 position = Vector2(341, 467)
+animation = "run"
+moving_direction = "right"
+
+[node name="Crabby3" parent="." groups=["enemy"] instance=ExtResource("18_dyrn2")]
+position = Vector2(1435, 275)
 animation = "run"
 moving_direction = "right"
 
@@ -349,7 +365,7 @@ limit_bottom = 560
 character = NodePath("../MainCharacter")
 
 [node name="PowerUp" parent="." instance=ExtResource("22_vr6n4")]
-position = Vector2(192, 809)
+position = Vector2(123, 530)
 animation = &"green_bottle"
 
 [node name="SlimeGreen" parent="." groups=["enemy"] instance=ExtResource("24_pkljj")]
