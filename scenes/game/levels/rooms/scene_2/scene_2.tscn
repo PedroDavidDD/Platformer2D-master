@@ -232,6 +232,7 @@ motion_scale = Vector2(0.1, 0.1)
 motion_mirroring = Vector2(1150, 0)
 
 [node name="Bg" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+visible = false
 z_index = -1
 position = Vector2(496, 312)
 scale = Vector2(3.07552, 5.17188)
