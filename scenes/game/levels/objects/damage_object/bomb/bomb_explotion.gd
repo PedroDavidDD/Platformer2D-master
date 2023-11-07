@@ -16,7 +16,7 @@ func _on_area_2d_body_entered(body):
 	if body.is_in_group("player"):
 		# Quitamos vidas
 		var _move_script = body.get_node("MainCharacterMovement")
-		_move_script.hit(10)
+		_move_script.hit(4)
 
 
 func _on_frame_changed():
