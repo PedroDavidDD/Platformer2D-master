@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b6dju53aaci78"]
+[gd_scene load_steps=22 format=3 uid="uid://b6dju53aaci78"]
 
 [ext_resource type="TileSet" uid="uid://bx1rsqucrwm2i" path="res://assets/resources/bg_tile_set.tres" id="1_1gmux"]
 [ext_resource type="PackedScene" uid="uid://ca3ueo0yewjov" path="res://scenes/game/characters/main_character/main_character.tscn" id="2_2vh60"]
@@ -9,6 +9,15 @@
 [ext_resource type="PackedScene" uid="uid://b5qjvfbte4svk" path="res://scenes/game/levels/objects/pickable_object/pickable_object.tscn" id="7_x5wxv"]
 [ext_resource type="PackedScene" uid="uid://brhmupxo2xjim" path="res://scenes/game/levels/objects/change_scene/door_change_scene.tscn" id="8_kyclf"]
 [ext_resource type="PackedScene" uid="uid://g8qg1kpqq5eh" path="res://assets/sprites/Objects/icon_set_removebg_preview.tscn" id="9_lr7et"]
+[ext_resource type="Texture2D" uid="uid://maf7s1c6fyyp" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/objects/chest/chest_close_04.png" id="10_cyhjx"]
+[ext_resource type="Texture2D" uid="uid://dcptpykdlp5rk" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/objects/flag/flag_01.png" id="11_nynoc"]
+[ext_resource type="Texture2D" uid="uid://baf8gssaduqa8" path="res://assets/sprites/treasure_hunters/wood_and_paper_ui/sprites/ui/Individual keyboard Icons/keyboard_171.png" id="12_qoj07"]
+[ext_resource type="Texture2D" uid="uid://bwk07tfm6hssd" path="res://assets/sprites/treasure_hunters/wood_and_paper_ui/sprites/ui/Individual keyboard Icons/keyboard_172.png" id="13_7o2vi"]
+[ext_resource type="Texture2D" uid="uid://blmll1nmw5qvc" path="res://assets/sprites/treasure_hunters/wood_and_paper_ui/sprites/ui/Individual keyboard Icons/keyboard_173.png" id="14_7kqys"]
+[ext_resource type="Texture2D" uid="uid://bpa54jtijwlot" path="res://assets/sprites/treasure_hunters/wood_and_paper_ui/sprites/ui/Individual keyboard Icons/keyboard_174.png" id="15_lsr4t"]
+[ext_resource type="Texture2D" uid="uid://boeei43mmm20n" path="res://assets/sprites/treasure_hunters/wood_and_paper_ui/sprites/ui/Individual keyboard Icons/keyboard_203.png" id="16_pa832"]
+[ext_resource type="Texture2D" uid="uid://dgfvd7gwfxjey" path="res://assets/sprites/treasure_hunters/wood_and_paper_ui/sprites/ui/Individual keyboard Icons/keyboard_137.png" id="17_p1yip"]
+[ext_resource type="Texture2D" uid="uid://ccg3xgw2g8lih" path="res://assets/sprites/treasure_hunters/wood_and_paper_ui/sprites/ui/Individual keyboard Icons/keyboard_134.png" id="18_yer3f"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6x0hx"]
 load_path = "res://.godot/imported/small_cloud_1.png-40532304be8a8e58b358963bfcb15f67.ctex"
@@ -61,15 +70,15 @@ text = "Continuará..."
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
+[node name="Bg" type="Sprite2D" parent="ParallaxBackground"]
+z_index = -1
+position = Vector2(541, 210)
+scale = Vector2(4.011, 6.744)
+texture = ExtResource("5_c0f45")
+
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.1, 0.1)
 motion_mirroring = Vector2(1150, 0)
-
-[node name="Bg" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-z_index = -1
-position = Vector2(498, 186)
-scale = Vector2(3.07552, 5.17188)
-texture = ExtResource("5_c0f45")
 
 [node name="ParallaxLayer1" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.1, 0.1)
@@ -130,7 +139,7 @@ scale = Vector2(4, 4.324)
 texture = SubResource("CompressedTexture2D_r4e10")
 
 [node name="Crabby" parent="." groups=["enemy"] instance=ExtResource("6_thrns")]
-position = Vector2(577, 483)
+position = Vector2(190, 235)
 animation = "run"
 moving_direction = "right"
 
@@ -158,11 +167,11 @@ position = Vector2(595, 113)
 animation = "gold_coin"
 
 [node name="PickableObject5" parent="Collectibles" instance=ExtResource("7_x5wxv")]
-position = Vector2(495, 98)
+position = Vector2(502, 93)
 animation = "gold_coin"
 
 [node name="PickableObject6" parent="Collectibles" instance=ExtResource("7_x5wxv")]
-position = Vector2(366, 105)
+position = Vector2(369, 95)
 animation = "gold_coin"
 
 [node name="PickableObject7" parent="Collectibles" instance=ExtResource("7_x5wxv")]
@@ -226,11 +235,29 @@ position = Vector2(595, 46)
 animation = "gold_coin"
 
 [node name="PickableObject4" parent="Collectibles" instance=ExtResource("7_x5wxv")]
-position = Vector2(207, 356)
+position = Vector2(172, 367)
+animation = "gold_coin"
+
+[node name="PickableObject25" parent="Collectibles" instance=ExtResource("7_x5wxv")]
+position = Vector2(110, 240)
+animation = "gold_coin"
+
+[node name="PickableObject26" parent="Collectibles" instance=ExtResource("7_x5wxv")]
+position = Vector2(77, 213)
+rotation = -2.54805
+animation = "gold_coin"
+
+[node name="PickableObject27" parent="Collectibles" instance=ExtResource("7_x5wxv")]
+position = Vector2(48, 238)
+rotation = -2.54805
 animation = "gold_coin"
 
 [node name="PickableObject13" parent="Collectibles" instance=ExtResource("7_x5wxv")]
-position = Vector2(116, 358)
+position = Vector2(113, 368)
+animation = "gold_coin"
+
+[node name="PickableObject24" parent="Collectibles" instance=ExtResource("7_x5wxv")]
+position = Vector2(141, 316)
 animation = "gold_coin"
 
 [node name="DoorChangeScene" parent="." groups=["doorChangeScene"] instance=ExtResource("8_kyclf")]
@@ -241,3 +268,69 @@ _path_to_scene = "res://scenes/game/levels/rooms/scene_1/scene_1.tscn"
 [node name="Key" parent="DoorChangeScene" groups=["key"] instance=ExtResource("9_lr7et")]
 position = Vector2(-327.5, -16.25)
 scale = Vector2(0.653936, 0.727268)
+
+[node name="Objects" type="Node2D" parent="."]
+
+[node name="Chest" type="Sprite2D" parent="Objects"]
+position = Vector2(76, 238)
+texture = ExtResource("10_cyhjx")
+
+[node name="Chest2" type="Sprite2D" parent="Objects"]
+position = Vector2(581, 111)
+texture = ExtResource("10_cyhjx")
+
+[node name="Flag" type="Sprite2D" parent="Objects"]
+position = Vector2(622, 82)
+texture = ExtResource("11_nynoc")
+
+[node name="UI_comandos" type="Node2D" parent="."]
+position = Vector2(55.135, 230)
+scale = Vector2(0.54, 0.54)
+
+[node name="Keyboard171_top" type="Sprite2D" parent="UI_comandos"]
+position = Vector2(159.009, 436)
+texture = ExtResource("12_qoj07")
+
+[node name="Keyboard172_down" type="Sprite2D" parent="UI_comandos"]
+position = Vector2(160, 468)
+texture = ExtResource("13_7o2vi")
+
+[node name="Keyboard173_right" type="Sprite2D" parent="UI_comandos"]
+position = Vector2(198, 466)
+texture = ExtResource("14_7kqys")
+
+[node name="Keyboard174_left" type="Sprite2D" parent="UI_comandos"]
+position = Vector2(122, 468)
+texture = ExtResource("15_lsr4t")
+
+[node name="Keyboard203_space" type="Sprite2D" parent="UI_comandos"]
+position = Vector2(396.046, 435.185)
+scale = Vector2(1.225, 1.225)
+texture = ExtResource("16_pa832")
+
+[node name="Control" type="Control" parent="UI_comandos/Keyboard203_space"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -8.3916
+offset_top = 18.182
+offset_right = 31.6084
+offset_bottom = 58.182
+scale = Vector2(0.715, 0.715)
+
+[node name="Label" type="Label" parent="UI_comandos/Keyboard203_space/Control"]
+layout_mode = 0
+offset_left = -38.9771
+offset_top = -43.5414
+offset_right = 69.0229
+offset_bottom = -17.5414
+text = "[ SPACE ] X 2"
+
+[node name="Keyboard137_bomb" type="Sprite2D" parent="UI_comandos"]
+position = Vector2(1312.71, -90.7407)
+scale = Vector2(1.85185, 1.85185)
+texture = ExtResource("17_p1yip")
+
+[node name="Keyboard134_attack" type="Sprite2D" parent="UI_comandos"]
+position = Vector2(159.009, -125.926)
+scale = Vector2(1.85185, 1.85185)
+texture = ExtResource("18_yer3f")
