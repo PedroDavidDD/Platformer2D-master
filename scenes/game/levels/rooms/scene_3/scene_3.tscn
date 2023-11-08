@@ -269,7 +269,7 @@ position = Vector2(1442, 217)
 animation = "gold_coin"
 
 [node name="PickableObject21" parent="Collectibles" instance=ExtResource("20_juf85")]
-position = Vector2(1492, 195)
+position = Vector2(1394, 303)
 animation = "gold_coin"
 
 [node name="PickableObject20" parent="Collectibles" instance=ExtResource("20_juf85")]
@@ -446,7 +446,7 @@ limit_bottom = 560
 character = NodePath("../MainCharacter")
 
 [node name="PowerUp" parent="." instance=ExtResource("22_vr6n4")]
-position = Vector2(1094, 525)
+position = Vector2(1254, 531)
 animation = &"green_bottle"
 
 [node name="SlimeGreen2" parent="." groups=["enemy"] instance=ExtResource("24_pkljj")]

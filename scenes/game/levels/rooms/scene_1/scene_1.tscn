@@ -365,7 +365,7 @@ limit_bottom = 560
 character = NodePath("../MainCharacter")
 
 [node name="PowerUp" parent="." instance=ExtResource("22_vr6n4")]
-position = Vector2(123, 530)
+position = Vector2(866, 336)
 animation = &"green_bottle"
 
 [node name="SlimeGreen" parent="." groups=["enemy"] instance=ExtResource("24_pkljj")]

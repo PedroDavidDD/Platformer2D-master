@@ -4,7 +4,7 @@ extends Node2D
 ## Detecta eventos de teclado para poder mover un personaje por un escenario
 ## y ajustar animaciones según el movimiento
 ## Movimiento básica de personaje: https://docs.google.com/document/d/1c9XXznR1KBJSr0jrEWjYIqfFuNGCGP2YASkXsFgEayU/edit
- 
+class_name Player
 
 @export var character: CharacterBody2D # Referencia al personaje a mover
 @export var main_animation: AnimatedSprite2D # Referencia al sprite del personaje

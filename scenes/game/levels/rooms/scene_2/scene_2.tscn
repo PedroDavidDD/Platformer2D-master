@@ -117,7 +117,7 @@ position = Vector2(-697, -127)
 scale = Vector2(0.653936, 0.727268)
 
 [node name="Key3" parent="DoorChangeScene" groups=["key"] instance=ExtResource("11_hfdpn")]
-position = Vector2(-37, -115)
+position = Vector2(-39, -125)
 scale = Vector2(0.213114, 0.279755)
 
 [node name="Enemies" type="Node2D" parent="."]
@@ -193,7 +193,7 @@ position = Vector2(799, 150)
 animation = "green_diamond"
 
 [node name="SilverCoin" parent="CollectableObjects" instance=ExtResource("6_6sl3g")]
-position = Vector2(381, 496)
+position = Vector2(1013, 412)
 animation = "silver_coin"
 
 [node name="BlueDiamond" parent="CollectableObjects" instance=ExtResource("6_6sl3g")]
@@ -201,7 +201,7 @@ position = Vector2(429, 462)
 animation = "blue_diamond"
 
 [node name="RedDiamond" parent="CollectableObjects" instance=ExtResource("6_6sl3g")]
-position = Vector2(192, 429)
+position = Vector2(1042, 411)
 animation = "red_diamond"
 
 [node name="BlueDiamond3" parent="CollectableObjects" instance=ExtResource("6_6sl3g")]
@@ -502,7 +502,7 @@ position = Vector2(526, 297)
 animation = &"idle_left"
 
 [node name="PowerUp" parent="." instance=ExtResource("19_8ti24")]
-position = Vector2(1025, 559)
+position = Vector2(386, 503)
 animation = &"green_bottle"
 
 [node name="RedPotion2" parent="." instance=ExtResource("20_ychqr")]
