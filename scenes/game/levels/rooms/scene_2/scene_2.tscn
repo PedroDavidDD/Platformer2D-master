@@ -116,6 +116,10 @@ scale = Vector2(0.427632, 0.528919)
 position = Vector2(-697, -127)
 scale = Vector2(0.653936, 0.727268)
 
+[node name="Key3" parent="DoorChangeScene" groups=["key"] instance=ExtResource("11_hfdpn")]
+position = Vector2(-37, -115)
+scale = Vector2(0.213114, 0.279755)
+
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="CollectableObjects" type="Node2D" parent="."]
