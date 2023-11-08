@@ -32,9 +32,11 @@ func _unhandled_input(event):
 		# Seteamos la dirección de la fuerza y offset
 		if _move_script.turn_side == "right":
 			bomb_scene.linear_velocity.x = abs(bomb_scene.linear_velocity.x)
+			bomb_scene.linear_velocity.y = abs(bomb_scene.linear_velocity.y) - 5
 			bomb_scene.position.x = _character_position.x + 25
 		else:
 			bomb_scene.linear_velocity.x = - abs(bomb_scene.linear_velocity.x)
+			bomb_scene.linear_velocity.y = abs(bomb_scene.linear_velocity.y) - 5
 			bomb_scene.position.x = _character_position.x - 25
 	
 		# Agregamos la bomba a la escena
