@@ -27,6 +27,8 @@ var _movements = {
 	DEAD_HIT = "dead_hit",
 	ATTACK = "attack_2",
 	BOMB = "attack_3",
+	TELEPORT = "teleport",
+	TELEPORT_EFFECT = "teleport_effect",
 }
 var _current_movement = _movements.IDLE # Variable de movimiento
 var _is_jumping = false # Indicamos que el personaje está saltando
@@ -46,6 +48,11 @@ var _male_hurt_sound = preload("res://assets/sounds/male_hurt.mp3")
 var _hit_sound = preload("res://assets/sounds/slash.mp3")
 
 var playerKeys = [] # C0, C20, ...
+
+var canTeleport = true
+var _is_teleporting = false
+@export var teleportSpeed = 100
+var _teleport_sound = preload("res://assets/sounds/teleport.wav")
 
 # Función de inicialización
 func _ready():
@@ -95,7 +102,12 @@ func _move(delta):
 		elif _is_jumping and _jump_count < _max_jumps:
 			_current_movement = _movements.JUMP_WITH_SWORD
 			_jump_count += 1 # Sumamos el segundo salto
-
+	
+	# Cuando se presiona la tecla (f), hacemos animación de Dash
+	if canTeleport and Input.is_action_just_pressed("teleport"):
+		_current_movement = _movements.TELEPORT
+		teleport()
+	
 	_apply_gravity(delta)
 	
 	if _died: # Si el personaje murió, no se podrá mover en el eje X
@@ -130,6 +142,8 @@ func _set_animation():
 		_play_sound(_hit_sound)
 		# Agregamos el effecto especial
 		_play_sword_effect()
+	elif _current_movement == _movements.TELEPORT:
+		main_animation.play(_movements.TELEPORT)
 	elif _current_movement == _movements.BOMB:
 		# Lanzamos bomba
 		bombing = true
@@ -151,7 +165,22 @@ func _set_animation():
 		audio_player.stop()
 		_is_playing = ""
 
-
+func teleport():
+	_is_teleporting = true
+	canTeleport = false
+	# Reproducimos la animación de la moneda recogida
+	do_animation()
+	await get_tree().create_timer(1).timeout
+	_is_teleporting = false
+	await get_tree().create_timer(1).timeout
+	canTeleport = true
+	
+func do_animation():
+	# Validamos si la animación es de moneda
+	audio_player.stream = _teleport_sound
+	audio_player.play()
+	main_animation.play(_movements.TELEPORT_EFFECT)
+	
 # Función que aplica gravedad de caída o salto
 func _apply_gravity(delta):
 	var v = character.velocity
@@ -160,6 +189,13 @@ func _apply_gravity(delta):
 	if _current_movement == _movements.JUMP_WITH_SWORD and not _died:
 		# Saltamos, solo si el personaje no ha muerto
 		v.y = -jump
+	# El salto solo se ejecuta 1 vez, en ese momento hacemos que el personaje salte
+	elif _current_movement == _movements.TELEPORT and not _died:
+		if (v.x < 0):
+			v.x = -5 * teleportSpeed * gravity * delta
+		else:
+			v.x = 5 * teleportSpeed * gravity * delta
+		v.y = -teleportSpeed
 	else:
 		# Aplicación de gravedad (aceleración en la caida)
 		v.y += gravity * delta
@@ -168,6 +204,7 @@ func _apply_gravity(delta):
 			# Reseteamos variables de salto
 			_is_jumping = false
 			_jump_count = 0
+	
 	# Aplicamos el vector de velocidad al personaje
 	character.velocity = v
 	
@@ -271,5 +308,4 @@ func _play_sword_effect():
 	
 	# Reproducimos el efecto de la espada
 	effect_animation_sword.play("attack_2_effect")
-
 
