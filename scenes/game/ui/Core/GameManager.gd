@@ -2,7 +2,7 @@ extends Node
 
 var current_checkpoint : Checkpoint
 
-var player : Player
+var player : CharacterBody2D
 
 
 func respawn_player():
