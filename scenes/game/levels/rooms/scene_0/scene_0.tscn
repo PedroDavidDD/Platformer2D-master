@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://b6dju53aaci78"]
+[gd_scene load_steps=24 format=3 uid="uid://b6dju53aaci78"]
 
 [ext_resource type="TileSet" uid="uid://bx1rsqucrwm2i" path="res://assets/resources/bg_tile_set.tres" id="1_1gmux"]
 [ext_resource type="PackedScene" uid="uid://ca3ueo0yewjov" path="res://scenes/game/characters/main_character/main_character.tscn" id="2_2vh60"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://dgfvd7gwfxjey" path="res://assets/sprites/treasure_hunters/wood_and_paper_ui/sprites/ui/Individual keyboard Icons/keyboard_137.png" id="17_p1yip"]
 [ext_resource type="Texture2D" uid="uid://ccg3xgw2g8lih" path="res://assets/sprites/treasure_hunters/wood_and_paper_ui/sprites/ui/Individual keyboard Icons/keyboard_134.png" id="18_yer3f"]
 [ext_resource type="PackedScene" uid="uid://x2oowp3ldqvs" path="res://assets/sprites/Objects/cloud_hidden.tscn" id="19_dcsx2"]
+[ext_resource type="Texture2D" uid="uid://6pipywim3ap" path="res://assets/sprites/treasure_hunters/wood_and_paper_ui/sprites/ui/Individual keyboard Icons/keyboard_127.png" id="19_o8y28"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6x0hx"]
 load_path = "res://.godot/imported/small_cloud_1.png-40532304be8a8e58b358963bfcb15f67.ctex"
@@ -338,6 +339,11 @@ texture = ExtResource("17_p1yip")
 position = Vector2(159.009, -125.926)
 scale = Vector2(1.85185, 1.85185)
 texture = ExtResource("18_yer3f")
+
+[node name="Keyboard127_teleport" type="Sprite2D" parent="UI_comandos"]
+position = Vector2(725.676, 81.4815)
+scale = Vector2(1.85185, 1.85185)
+texture = ExtResource("19_o8y28")
 
 [node name="Node2D" type="Node2D" parent="."]
 z_index = 5
