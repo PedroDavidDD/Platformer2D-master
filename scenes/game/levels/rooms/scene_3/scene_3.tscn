@@ -41,6 +41,8 @@ autoplay = true
 bus = &"Ambient"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.976471, 1, 0.917647, 1)
+self_modulate = Color(0.960784, 0.894118, 0.898039, 1)
 position = Vector2(787, 320)
 scale = Vector2(1.44434, 0.569336)
 texture = ExtResource("3_8o5gq")
