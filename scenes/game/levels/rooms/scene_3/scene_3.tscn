@@ -177,11 +177,11 @@ texture = ExtResource("13_amc1m")
 [node name="DoorChangeScene" parent="Objects" groups=["doorChangeScene"] instance=ExtResource("17_ydyba")]
 position = Vector2(1221, -7)
 scale = Vector2(0.8, 0.8)
-_path_to_scene = "res://scenes/game/levels/rooms/scene_2/scene_2.tscn"
+_path_to_scene = "res://scenes/game/levels/rooms/scene_4/scene_4.tscn"
 
 [node name="Key3" parent="Objects/DoorChangeScene" groups=["key"] instance=ExtResource("25_apkul")]
-position = Vector2(-1202.5, -362.5)
-scale = Vector2(0.242193, 0.279755)
+position = Vector2(-1201.88, -360)
+scale = Vector2(0.509262, 0.540541)
 
 [node name="Key" parent="Objects/DoorChangeScene" groups=["key"] instance=ExtResource("25_apkul")]
 position = Vector2(126.25, -322.5)
@@ -336,6 +336,12 @@ animation = "red_diamond"
 
 [node name="RedPotion" parent="Collectibles" instance=ExtResource("20_1tp5l")]
 position = Vector2(144, 373)
+
+[node name="RedPotion6" parent="Collectibles" instance=ExtResource("20_1tp5l")]
+position = Vector2(809, 370)
+
+[node name="RedPotion7" parent="Collectibles" instance=ExtResource("20_1tp5l")]
+position = Vector2(791, 492)
 
 [node name="RedPotion5" parent="Collectibles" instance=ExtResource("20_1tp5l")]
 position = Vector2(1297, 342)
