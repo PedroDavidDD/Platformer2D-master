@@ -11,6 +11,7 @@ class_name Player
 @export var effect_animation_sword: AnimatedSprite2D # Referencia al sprite del personaje
 @export var audio_player: AudioStreamPlayer2D # Reproductor de audios
 @onready var _collision := $"../AreaSword/CollisionShape2D" # Colicionador de espada
+@onready var main_animation_effects= $"../Effects" # Sprite effectos Player
 
 var gravity = 650 # Gravedad para el personaje
 var velocity = 100 # Velocidad de movimiento en horizontal
@@ -168,18 +169,16 @@ func _set_animation():
 func teleport():
 	_is_teleporting = true
 	canTeleport = false
-	# Reproducimos la animación de la moneda recogida
+	# Reproducimos la animación del teleport
 	do_animation()
 	await get_tree().create_timer(1).timeout
 	_is_teleporting = false
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(1.3).timeout
 	canTeleport = true
 	
 func do_animation():
-	# Validamos si la animación es de moneda
-	audio_player.stream = _teleport_sound
-	audio_player.play()
-	main_animation.play(_movements.TELEPORT_EFFECT)
+	_play_sound(_teleport_sound)
+	main_animation_effects.play(_movements.TELEPORT_EFFECT)
 	
 # Función que aplica gravedad de caída o salto
 func _apply_gravity(delta):

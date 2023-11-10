@@ -298,23 +298,6 @@ animations = [{
 "loop": true,
 "name": &"teleport",
 "speed": 8.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("55_4hjk4")
-}, {
-"duration": 1.0,
-"texture": ExtResource("56_xxxct")
-}, {
-"duration": 1.0,
-"texture": ExtResource("57_8tvbx")
-}, {
-"duration": 1.0,
-"texture": null
-}],
-"loop": true,
-"name": &"teleport_effect",
-"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q04ya"]
@@ -322,6 +305,14 @@ size = Vector2(24, 25)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cwldb"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"default_effects",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("41_6a4mw")
@@ -398,9 +389,9 @@ animations = [{
 "duration": 1.0,
 "texture": null
 }],
-"loop": true,
-"name": &"teleport",
-"speed": 5.0
+"loop": false,
+"name": &"teleport_effect",
+"speed": 8.0
 }]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_isfec"]
@@ -455,25 +446,26 @@ script = ExtResource("3_odvu6")
 script = ExtResource("4_3n3a4")
 
 [node name="Animation" type="AnimatedSprite2D" parent="."]
+z_index = 1
 sprite_frames = SubResource("SpriteFrames_sohxe")
-animation = &"teleport"
+animation = &"attack_1"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, -2.5)
 shape = SubResource("RectangleShape2D_q04ya")
 
 [node name="Effects" type="AnimatedSprite2D" parent="."]
-visible = false
-modulate = Color(0.137255, 0.423529, 0, 1)
+modulate = Color(0, 0.466667, 1, 1)
+position = Vector2(-2, -6)
+scale = Vector2(2.5, 2.03125)
 sprite_frames = SubResource("SpriteFrames_cwldb")
-animation = &"teleport"
-frame_progress = 0.46282
+animation = &"default_effects"
 
 [node name="EffectsSword" type="AnimatedSprite2D" parent="."]
 z_index = 2
 position = Vector2(32, -1)
 sprite_frames = SubResource("SpriteFrames_isfec")
-animation = &"attack_2_effect"
+animation = &"idle"
 
 [node name="AreaSword" type="Area2D" parent="." groups=["hit"]]
 
