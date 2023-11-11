@@ -43,6 +43,7 @@ var _index_number_0 = 17
 @onready var enemy_group = $EnemyGroup
 @onready var LabelCrabby = $EnemyGroup/Panel/Crabby/LabelCrabby
 @onready var LabelKey = $EnemyGroup/Panel/Keys/LabelKey
+@onready var LabelKey_white = $EnemyGroup/Panel/Keys_door_scene/LabelKey
 
 
 # Función de inicialización

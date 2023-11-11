@@ -44,6 +44,7 @@ func _process(delta):
 		return not keys_in_possession.has(door_key)
 	)
 	_door_keys_amount.text = str(keys_in_possession.size()) + "/"+ str(door_keys.size())
+	HealthDashboard.LabelKey_white.text = _door_keys_amount.text
 	
 	if missing_keys.size() != 0:
 		_richTextLabel_door_keys.text = str(missing_keys)

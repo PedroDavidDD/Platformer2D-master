@@ -1,8 +1,8 @@
-[gd_scene load_steps=37 format=3 uid="uid://bbdmu0jrh4l4o"]
+[gd_scene load_steps=38 format=3 uid="uid://bbdmu0jrh4l4o"]
 
 [ext_resource type="Script" path="res://scenes/game/ui/health_dashboard/health_dashboard.gd" id="1_rufnl"]
 [ext_resource type="Texture2D" uid="uid://cl5b1weh62et3" path="res://assets/sprites/treasure_hunters/wood_and_paper_ui/sprites/life_bars/big_bars/1.png" id="2_q6wv6"]
-[ext_resource type="PackedScene" uid="uid://xeeunhrkvcx6" path="res://scenes/pausemenu.tscn" id="2_wagvh"]
+[ext_resource type="PackedScene" path="res://scenes/pausemenu.tscn" id="2_wagvh"]
 [ext_resource type="Texture2D" uid="uid://c51psidx5cxry" path="res://assets/sprites/treasure_hunters/wood_and_paper_ui/sprites/life_bars/big_bars/3.png" id="3_c11lr"]
 [ext_resource type="Texture2D" uid="uid://t2qsw1ribmcp" path="res://assets/sprites/treasure_hunters/wood_and_paper_ui/sprites/life_bars/big_bars/4.png" id="4_r3fbm"]
 [ext_resource type="Texture2D" uid="uid://ci24y5vdyxq0j" path="res://assets/sprites/treasure_hunters/wood_and_paper_ui/sprites/life_bars/colors/1.png" id="5_ygykx"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://xiw4qwa52ual" path="res://assets/sprites/treasure_hunters/pirate_treasure/sprites/red_diamond/01.png" id="11_7u8si"]
 [ext_resource type="Texture2D" uid="uid://cmlgr3i0h1klc" path="res://assets/sprites/treasure_hunters/the_crusty_crew/sprites/crabby/01_idle/idle_01.png" id="13_uppaq"]
 [ext_resource type="Texture2D" uid="uid://bh50bsc31vx8q" path="res://assets/sprites/treasure_hunters/merchant_ship/sprites/chest_key/idle/1.png" id="14_a1a50"]
+[ext_resource type="Texture2D" uid="uid://t0l007ytcfir" path="res://assets/sprites/treasure_hunters/merchant_ship/sprites/chest_key/idle/key_white.png" id="16_yjwxp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jphx6"]
 atlas = ExtResource("7_kitrq")
@@ -564,6 +565,53 @@ scale = Vector2(1.6, 1.6)
 texture = ExtResource("14_a1a50")
 
 [node name="LabelKey" type="Label" parent="EnemyGroup/Panel/Keys"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 70.0
+offset_top = -10.0
+offset_right = 133.0
+offset_bottom = 42.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.945098, 0.4, 0, 1)
+theme_override_font_sizes/font_size = 35
+text = "0/0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Keys_door_scene" type="Control" parent="EnemyGroup/Panel"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = 27.0
+offset_right = 40.0
+offset_bottom = 67.0
+grow_vertical = 2
+scale = Vector2(0.7, 0.7)
+
+[node name="TextureReactKey" type="TextureRect" parent="EnemyGroup/Panel/Keys_door_scene"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = -21.5
+offset_right = 36.0
+offset_bottom = 21.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("16_yjwxp")
+
+[node name="LabelKey" type="Label" parent="EnemyGroup/Panel/Keys_door_scene"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
