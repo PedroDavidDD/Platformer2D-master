@@ -82,3 +82,5 @@ func _load_next_level(body):
 						SceneTransition.change_scene(_path_to_scene)
 			else:
 				print("Consigue llaves")
+		# Establecer en 'true' para que en el siguiente nivel, aparezca en la posición establecida por la vista de juego.
+		GameManager.level_start = true

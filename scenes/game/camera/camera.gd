@@ -18,7 +18,6 @@ func _ready():
 	# Seteamos posición inicial de la cámara
 	position = character.position
 
-
 # Función de ejecución de físicas
 func _physics_process(delta):
 	# Generamos posiciones "interpoladas" (entre la posición de la cámara y el personaje)

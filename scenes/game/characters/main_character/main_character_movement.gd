@@ -206,11 +206,11 @@ func _apply_gravity(delta):
 	
 	# Aplicamos el vector de velocidad al personaje
 	character.velocity = v
-	
+
 func die():
 	# Seteamos la variable de morir averdadero
 	_died = true
-
+	GameManager.level_start = false
 
 # Recibir daño
 func hit(value: int):
@@ -223,7 +223,7 @@ func hit(value: int):
 	
 	# Bajamos vida y validamos si el personaje ha perdido
 	if HealthDashboard.life == 0:
-		_died = true
+		die()
 	else:
 		pass
 		# Animación de golpe
