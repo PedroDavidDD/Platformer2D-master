@@ -1,9 +1,10 @@
-[gd_scene load_steps=29 format=3 uid="uid://dhor7t5klwdwx"]
+[gd_scene load_steps=30 format=3 uid="uid://dhor7t5klwdwx"]
 
 [ext_resource type="Texture2D" uid="uid://cg6wkkuni8aq8" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/background/bg_image.png" id="1_a12cs"]
 [ext_resource type="TileSet" uid="uid://bx1rsqucrwm2i" path="res://assets/resources/bg_tile_set.tres" id="1_atorb"]
 [ext_resource type="PackedScene" uid="uid://cakk10ffh2nby" path="res://slime_green.tscn" id="1_q772s"]
 [ext_resource type="PackedScene" uid="uid://ca3ueo0yewjov" path="res://scenes/game/characters/main_character/main_character.tscn" id="1_vi0ax"]
+[ext_resource type="Script" path="res://scenes/game/levels/rooms/scene_2/scene_2.gd" id="1_xno70"]
 [ext_resource type="AudioStream" uid="uid://dfb4lvan1kwl2" path="res://assets/sounds/pirate_theme.ogg" id="1_xvhx7"]
 [ext_resource type="PackedScene" uid="uid://8rbt5lmdrp0s" path="res://scenes/game/camera/camera.tscn" id="2_2f152"]
 [ext_resource type="Texture2D" uid="uid://11mixwn20p1x" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/background/puente.png" id="2_rvh7e"]
@@ -36,6 +37,7 @@ load_path = "res://.godot/imported/small_cloud_1.png-40532304be8a8e58b358963bfcb
 load_path = "res://.godot/imported/small_cloud_3.png-2824e524f4818e08cf60700642ab74ab.ctex"
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_xno70")
 
 [node name="Sprite2D5" type="Sprite2D" parent="."]
 position = Vector2(865.875, 462.25)

@@ -9,11 +9,17 @@ extends Node2D
 # Area para siguiente nivel
 @onready var _area_next_level = $Areas/AreaNextLevel
 
+var player = []
 
 # Función de inicialización
 func _ready():
 	# Escuchamos cuando el personaje entre al área de contacto
 	_area_next_level.body_entered.connect(_load_nex_level)
+	player = get_tree().get_nodes_in_group("player")[0]
+	
+	if GameManager.level_start:
+		GameManager.last_position = player.global_position
+	player.global_position = GameManager.last_position
 
 
 # Cargamos el siguiente nivel (la siguiente escena)

@@ -1,6 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://b1d750o6hts76"]
+[gd_scene load_steps=18 format=3 uid="uid://b1d750o6hts76"]
 
 [ext_resource type="Texture2D" uid="uid://dpmc7wxwixjr6" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/background/fondo-marino-3.png" id="1_1ey8l"]
+[ext_resource type="Script" path="res://scenes/game/levels/rooms/scene_4/scene_4.gd" id="1_3v6bm"]
 [ext_resource type="TileSet" uid="uid://bx1rsqucrwm2i" path="res://assets/resources/bg_tile_set.tres" id="1_mv2rp"]
 [ext_resource type="PackedScene" uid="uid://ca3ueo0yewjov" path="res://scenes/game/characters/main_character/main_character.tscn" id="2_e4qjl"]
 [ext_resource type="PackedScene" uid="uid://cakk10ffh2nby" path="res://slime_green.tscn" id="2_faqoc"]
@@ -18,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://dl8afnvp5w315" path="res://scenes/game/levels/objects/power_up/power_up.tscn" id="16_pjtgd"]
 
 [node name="scene_3" type="Node2D"]
+script = ExtResource("1_3v6bm")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(776, 449)
