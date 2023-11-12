@@ -1,9 +1,10 @@
-[gd_scene load_steps=25 format=3 uid="uid://b6dju53aaci78"]
+[gd_scene load_steps=26 format=3 uid="uid://b6dju53aaci78"]
 
 [ext_resource type="TileSet" uid="uid://bx1rsqucrwm2i" path="res://assets/resources/bg_tile_set.tres" id="1_1gmux"]
 [ext_resource type="Script" path="res://scenes/game/levels/rooms/scene_0/scene_0.gd" id="1_lrpxo"]
 [ext_resource type="PackedScene" uid="uid://ca3ueo0yewjov" path="res://scenes/game/characters/main_character/main_character.tscn" id="2_2vh60"]
 [ext_resource type="PackedScene" uid="uid://8rbt5lmdrp0s" path="res://scenes/game/camera/camera.tscn" id="3_ftrd5"]
+[ext_resource type="PackedScene" uid="uid://bom5hbofv42n0" path="res://scenes/game/objects/Weapon/weapon.tscn" id="4_anbss"]
 [ext_resource type="FontFile" uid="uid://dregmkvncw55k" path="res://assets/fonts/press_Sstart_2p/PressStart2P-Regular.ttf" id="4_lb554"]
 [ext_resource type="Texture2D" uid="uid://cg6wkkuni8aq8" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/background/bg_image.png" id="5_c0f45"]
 [ext_resource type="PackedScene" uid="uid://bo37g7mv4j6pn" path="res://scenes/game/enemy/crabby.tscn" id="6_thrns"]
@@ -58,6 +59,9 @@ layer_2/tile_data = PackedInt32Array()
 [node name="MainCharacter" parent="." instance=ExtResource("2_2vh60")]
 z_index = 5
 position = Vector2(119, 466)
+
+[node name="Weapon" parent="MainCharacter" instance=ExtResource("4_anbss")]
+position = Vector2(7, 9)
 
 [node name="Camera2D" parent="." node_paths=PackedStringArray("character") instance=ExtResource("3_ftrd5")]
 character = NodePath("../MainCharacter")
