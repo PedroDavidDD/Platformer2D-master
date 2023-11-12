@@ -12,6 +12,7 @@ class_name Player
 @export var audio_player: AudioStreamPlayer2D # Reproductor de audios
 @onready var _collision := $"../AreaSword/CollisionShape2D" # Colicionador de espada
 @onready var main_animation_effects= $"../Effects" # Sprite effectos Player
+@onready var weapon := $"../Weapon" # Scena del gancho
 
 var gravity = 650 # Gravedad para el personaje
 var velocity = 100 # Velocidad de movimiento en horizontal
@@ -55,6 +56,8 @@ var _is_teleporting = false
 @export var teleportSpeed = 100
 var _teleport_sound = preload("res://assets/sounds/teleport.wav")
 
+
+
 # Función de inicialización
 func _ready():
 	main_animation.play(_current_movement)
@@ -84,11 +87,15 @@ func _move(delta):
 		character.velocity.x = -velocity
 		_current_movement = _movements.LEFT_WITH_SWORD	
 		turn_side = "left"
+		
+		weapon.scale.x = -1
 	# Cuando se presiona la tecla (flecha derecha), movemos el personaje a la derecha
 	elif Input.is_action_pressed("derecha"):
 		character.velocity.x = velocity
 		_current_movement = _movements.RIGHT_WITH_SWORD
 		turn_side = "right"
+		
+		weapon.scale.x = 1
 	# Cuando no presionamos teclas, no hay movimiento	
 	else:
 		character.velocity.x = 0
@@ -108,6 +115,9 @@ func _move(delta):
 	if canTeleport and Input.is_action_just_pressed("teleport"):
 		_current_movement = _movements.TELEPORT
 		teleport()
+	
+	if Input.is_action_pressed("clic"):
+		shootBall()
 	
 	_apply_gravity(delta)
 	
@@ -307,4 +317,16 @@ func _play_sword_effect():
 	
 	# Reproducimos el efecto de la espada
 	effect_animation_sword.play("attack_2_effect")
+
+func shootBall():
+	var shoot_ball = weapon.ball.instantiate()
+	if turn_side == "left":
+		shoot_ball.scale = Vector2(-1, 1)
+		shoot_ball.speed = -320
+	else:
+		shoot_ball.scale = Vector2(1, 1)
+		shoot_ball.speed = 320
+	add_child(shoot_ball)
+	shoot_ball.global_position = weapon.get_node("Direction").global_position
+	get_tree().call_group("scene_0","add_child")
 

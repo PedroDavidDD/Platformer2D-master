@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://xh2j35i86wt4"
-path="res://.godot/imported/disparo_cuerda.png-3e811a75a3229782be32b7b6c1b9e7b3.ctex"
+path="res://.godot/imported/disparo_cuerda.png-9c5343177ca21417cedd8d42be13ccf8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/treasure_hunters/merchant_ship/sprites/gancho/disparo_cuerda.png"
-dest_files=["res://.godot/imported/disparo_cuerda.png-3e811a75a3229782be32b7b6c1b9e7b3.ctex"]
+source_file="res://assets/sprites/treasure_hunters/merchant_ship/sprites/Gancho/disparo_cuerda.png"
+dest_files=["res://.godot/imported/disparo_cuerda.png-9c5343177ca21417cedd8d42be13ccf8.ctex"]
 
 [params]
 
