@@ -31,6 +31,7 @@ var _movements = {
 	BOMB = "attack_3",
 	TELEPORT = "teleport",
 	TELEPORT_EFFECT = "teleport_effect",
+	FLY = "fly",
 }
 var _current_movement = _movements.IDLE # Variable de movimiento
 var _is_jumping = false # Indicamos que el personaje está saltando
@@ -64,6 +65,9 @@ var isShootBall: bool = false
 # Player mueve hacia el gancho
 var canPlayerMove: bool = false
 var player_movement_speed: int = 100.0 
+
+# Define una variable para controlar si la función player_to_ball está activa o no
+var isPlayerToBallActive = false
 
 # Función de inicialización
 func _ready():
@@ -129,7 +133,7 @@ func _move(delta):
 			await get_tree().create_timer(0.5).timeout
 			isShootBall = false
 	
-	player_to_ball(character, delta)
+	SkillPlayerToBall(character, delta)
 	
 	_apply_gravity(delta)
 	
@@ -178,9 +182,12 @@ func _set_animation():
 		_collision.position.x = abs(_collision.position.x)
 	elif _current_movement == _movements.LEFT_WITH_SWORD:
 		# Movimiento hacia la izquierda (animación "correr" volteada)
-		main_animation.play(_movements.RIGHT_WITH_SWORD)
+		main_animation.play(_movements.LEFT_WITH_SWORD)
 		main_animation.flip_h = true
 		_collision.position.x = - abs(_collision.position.x)
+	elif _current_movement == _movements.FLY:
+		# Movimiento hacia la izquierda (animación "correr" volteada)
+		main_animation.play(_movements.FLY)
 	else:
 		# Movimiento por defecto (animación de "reposo")
 		main_animation.play(_movements.IDLE_WITH_SWORD)
@@ -360,3 +367,16 @@ func player_to_ball(character, delta):
 			ultima_ball.is_ball_moving = true
 			_current_movement = _movements.IDLE
 			ultima_ball.queue_free()
+
+func SkillPlayerToBall(character, delta):
+	# Verifica si se presiona la tecla 'G'
+	if Input.is_action_pressed("isGancho") && !_is_jumping:
+		# Activa o desactiva la función player_to_ball
+		isPlayerToBallActive = not isPlayerToBallActive
+	# Ejecuta la función player_to_ball si la variable isPlayerToBallActive está en True
+	if isPlayerToBallActive:
+		player_to_ball(character, delta)
+		HealthDashboard.label_SkillGancho.text = "[1]"
+		main_animation.animation == _movements.FLY
+	else:
+		HealthDashboard.label_SkillGancho.text = "[0]"
