@@ -49,14 +49,21 @@ var _dead_sound = preload("res://assets/sounds/dead.mp3")
 var _male_hurt_sound = preload("res://assets/sounds/male_hurt.mp3")
 var _hit_sound = preload("res://assets/sounds/slash.mp3")
 
+#conseguir llaves del player
 var playerKeys = [] # C0, C20, ...
 
+# Teleport
 var canTeleport = true
 var _is_teleporting = false
 @export var teleportSpeed = 100
 var _teleport_sound = preload("res://assets/sounds/teleport.wav")
 
+# Disparar cada 1s
+var isShootBall: bool = false
 
+# Player mueve hacia el gancho
+var canPlayerMove: bool = false
+var player_movement_speed: int = 100.0 
 
 # Función de inicialización
 func _ready():
@@ -79,7 +86,6 @@ func _unhandled_input(event):
 		_current_movement = _movements.BOMB
 	_set_animation()
 
-
 # Función de movimiento general del personaje
 func _move(delta):
 	# Cuando se presiona la tecla (flecha izquierda), movemos el personaje a la izquierda
@@ -99,7 +105,7 @@ func _move(delta):
 	# Cuando no presionamos teclas, no hay movimiento	
 	else:
 		character.velocity.x = 0
-		_current_movement = _movements.IDLE	
+		_current_movement = _movements.IDLE
 	
 	# Cuando se presiona la tecla (espacio), hacemos animación de salto
 	if Input.is_action_just_pressed("saltar"):
@@ -117,7 +123,13 @@ func _move(delta):
 		teleport()
 	
 	if Input.is_action_pressed("clic"):
-		shootBall()
+		if !isShootBall:
+			shootBall()
+			isShootBall = true
+			await get_tree().create_timer(0.5).timeout
+			isShootBall = false
+	
+	player_to_ball(character, delta)
 	
 	_apply_gravity(delta)
 	
@@ -321,12 +333,30 @@ func _play_sword_effect():
 func shootBall():
 	var shoot_ball = weapon.ball.instantiate()
 	if turn_side == "left":
-		shoot_ball.scale = Vector2(-1, 1)
+		shoot_ball.scale = Vector2(-0.5, 0.5)
 		shoot_ball.speed = -320
 	else:
-		shoot_ball.scale = Vector2(1, 1)
+		shoot_ball.scale = Vector2(0.5, 0.5)
 		shoot_ball.speed = 320
-	add_child(shoot_ball)
 	shoot_ball.global_position = weapon.get_node("Direction").global_position
-	get_tree().call_group("scene_0","add_child")
+	get_tree().call_group("scene_0", "add_child", shoot_ball)
 
+func player_to_ball(character, delta):
+	var player_ball = get_parent().get_parent().get_node("Ball")
+	if player_ball and canPlayerMove:
+		var ultima_ball = get_tree().get_nodes_in_group("ballGroup").back()
+		var target_position = ultima_ball.global_position
+		var distance_threshold = 20
+
+		var direction = (target_position - character.global_position).normalized()
+		var move_amount = direction * player_movement_speed * delta
+		
+		if character.global_position.distance_to(target_position) > distance_threshold:
+			character.global_position += move_amount
+			# Desactivar la gravedad en el eje Y
+			character.velocity.y = 0
+		else:
+			canPlayerMove = false
+			ultima_ball.is_ball_moving = true
+			_current_movement = _movements.IDLE
+			ultima_ball.queue_free()

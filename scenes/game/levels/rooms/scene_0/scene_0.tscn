@@ -31,7 +31,7 @@ load_path = "res://.godot/imported/small_cloud_1.png-40532304be8a8e58b358963bfcb
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_r4e10"]
 load_path = "res://.godot/imported/small_cloud_3.png-2824e524f4818e08cf60700642ab74ab.ctex"
 
-[node name="scene_0" type="Node2D"]
+[node name="scene_0" type="Node2D" groups=["scene_0"]]
 script = ExtResource("1_lrpxo")
 
 [node name="TileMap" type="TileMap" parent="."]
