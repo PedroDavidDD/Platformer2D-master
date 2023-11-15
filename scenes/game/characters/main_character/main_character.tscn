@@ -458,8 +458,9 @@ script = ExtResource("4_3n3a4")
 [node name="Animation" type="AnimatedSprite2D" parent="."]
 z_index = 1
 sprite_frames = SubResource("SpriteFrames_sohxe")
-animation = &"fly"
-frame_progress = 0.692071
+animation = &"attack_2"
+frame = 2
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, -2.5)

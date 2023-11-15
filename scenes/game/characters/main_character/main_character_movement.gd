@@ -128,6 +128,7 @@ func _move(delta):
 	
 	if Input.is_action_pressed("clic"):
 		if !isShootBall:
+			weapon.get_node("AnimatedSprite2D").play("pistola")
 			shootBall()
 			isShootBall = true
 			await get_tree().create_timer(0.5).timeout
@@ -166,6 +167,7 @@ func _set_animation():
 		# Atacamos
 		attacking = true
 		main_animation.play(_movements.ATTACK)
+		weapon.get_node("AnimatedSprite2D").play("default")
 		_play_sound(_hit_sound)
 		# Agregamos el effecto especial
 		_play_sword_effect()
@@ -182,15 +184,14 @@ func _set_animation():
 		_collision.position.x = abs(_collision.position.x)
 	elif _current_movement == _movements.LEFT_WITH_SWORD:
 		# Movimiento hacia la izquierda (animación "correr" volteada)
-		main_animation.play(_movements.LEFT_WITH_SWORD)
+		main_animation.play(_movements.RIGHT_WITH_SWORD)
 		main_animation.flip_h = true
 		_collision.position.x = - abs(_collision.position.x)
 	elif _current_movement == _movements.FLY:
-		# Movimiento hacia la izquierda (animación "correr" volteada)
 		main_animation.play(_movements.FLY)
 	else:
 		# Movimiento por defecto (animación de "reposo")
-		main_animation.play(_movements.IDLE_WITH_SWORD)
+		main_animation.play(_movements.IDLE)
 		# Pausamos el sonido
 		audio_player.stop()
 		_is_playing = ""
@@ -362,10 +363,13 @@ func player_to_ball(character, delta):
 			character.global_position += move_amount
 			# Desactivar la gravedad en el eje Y
 			character.velocity.y = 0
+			_current_movement = _movements.FLY
+			weapon.get_node("AnimatedSprite2D").self_modulate = Color("#c5c5c500")
 		else:
 			canPlayerMove = false
 			ultima_ball.is_ball_moving = true
 			_current_movement = _movements.IDLE
+			weapon.get_node("AnimatedSprite2D").self_modulate = Color("#ffffff")
 			ultima_ball.queue_free()
 
 func SkillPlayerToBall(character, delta):
@@ -377,6 +381,6 @@ func SkillPlayerToBall(character, delta):
 	if isPlayerToBallActive:
 		player_to_ball(character, delta)
 		HealthDashboard.label_SkillGancho.text = "[1]"
-		main_animation.animation == _movements.FLY
 	else:
 		HealthDashboard.label_SkillGancho.text = "[0]"
+		weapon.get_node("AnimatedSprite2D").self_modulate = Color("#ffffff")
